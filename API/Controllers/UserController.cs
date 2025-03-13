@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Data;
+using API.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    public class UserController : Controller
+    
+    public class UserController(DataContext context) : BaseApiController
     {
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            return View();
+            var users = await context.Users.ToListAsync();
+
+            return users;
         }
     }
 }
