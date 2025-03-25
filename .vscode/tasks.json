@@ -36,6 +36,14 @@
                 "${workspaceFolder}/DatingApp.sln"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "npm",
+            "script": "start",
+            "path": "Client",
+            "problemMatcher": [],
+            "label": "npm: start - Client",
+            "detail": "ng serve"
         }
     ]
 }
