@@ -1,52 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      @if(accountService.currentUser())
-      {
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a routerLink="/members" routerLinkActive="active" class="nav-link">Matches</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/list" routerLinkActive="active" class="nav-link">List</a>
-          </li>
-  
-          <li class="nav-item">
-              <a routerLink="/messages" routerLinkActive="active" class="nav-link">Messages</a>
-            </li>
-         
-        </ul>
-      }
+  <a class="navbar-brand" routerLink="/">Navbar</a>
 
-      @if(accountService.currentUser())
-      {
-      
-          
-        <div class="ms-auto d-flex justify-content-end">
-          <div class="p-2 rounded" style="background-color: #d6eaff; border-radius: 35px;">
-            <button class="btn text-primary mx-2" style="background-color: white;">Edit Profile</button>
-            <button class="btn" style="background-color: skyblue; color: white;" >Logout</button>
-          </div>
-        </div>
-        
-            
-      }
-      
-      @if(!accountService.currentUser()){
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex justify-content-end gap-2 p-3">
-          <input class="form-control mr-sm-2"
-              [(ngModel)]="model.username"
-               placeholder="Username" aria-label="Username" name="username">
-          <input class="form-control mr-sm-2"
-              [(ngModel)]="model.password"
-              placeholder="Password" aria-label="Password" name="password" type="password">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-        </form>  
-      }
-      
+  @if(accountService.currentUser()){
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ 
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+  
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a routerLink="/members" routerLinkActive="active" class="nav-link">Matches</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/list" routerLinkActive="active" class="nav-link">List</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/messages" routerLinkActive="active" class="nav-link">Messages</a>
+      </li>
+    </ul>
+
+
+   
+   
+    <div class="d-flex justify-content-end ms-2">
+      <div class="p-2 rounded" style="background-color: #c9e2fd; border-radius: 35px;">
+        <button class="btn text-primary mx-2" style="background-color: white;">Edit Profile</button>
+        <button class="btn" style="background-color: rgb(53, 101, 235); color: white;" (click)="logout()">Logout</button>
+      </div>
     </div>
-  </nav>
+    
+  </div>
+}
+
+    @if(!accountService.currentUser()) {
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex mx-auto align-items-center justify-content-between" style="gap: 10px;">
+        <input class="form-control" [(ngModel)]="model.username" placeholder="Username" aria-label="Username"
+          name="username">
+        <input class="form-control" [(ngModel)]="model.password" placeholder="Password" aria-label="Password"
+          name="password" type="password">
+        <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
+      }
+ 
+</nav>

@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   users: any;
 
   ngOnInit(): void {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -33,11 +32,5 @@ export class AppComponent implements OnInit {
   }
 
 
-  getUsers() {
-    this.http.get('https://localhost:5001/api/user').subscribe({
-      next: response => this.users = response,
-      error: error => console.log('There was an error!', error),
-      complete: () => console.log('Completed!')
-    });
-  }
+  
 }
