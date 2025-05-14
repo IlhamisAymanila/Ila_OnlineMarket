@@ -26,7 +26,11 @@
    
     <div class="d-flex justify-content-end ms-2">
       <div class="p-2 rounded" style="background-color: #c9e2fd; border-radius: 35px;">
-        <button class="btn text-primary mx-2" style="background-color: white;">Edit Profile</button>
+        <img 
+        src="{{accountService.currentUser()?.photoUrl || './assets/user.png'}}"
+        alt="user main image"
+        >
+        <button routerLink="/member/edit" class="btn text-primary mx-2" style="background-color: white;">Edit Profile</button>
         <button class="btn" style="background-color: rgb(53, 101, 235); color: white;" (click)="logout()">Logout</button>
       </div>
     </div>
